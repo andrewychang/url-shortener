@@ -1,6 +1,7 @@
 ## Setup and Launch
 
-*Part 1 of take home is included in this repository*
+*Part 1 of take home is included in this repository*  
+
 *Requires a running local MongoDB server*
 
 If you do not have MongoDB installed, see here on how to install: https://docs.mongodb.com/manual/administration/install-community/
