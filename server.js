@@ -24,23 +24,23 @@ app.post("/shortenUrl", async (req, res) => {
     const longUrl = req.body.longUrl
     const url = await Url.findOne({ long: longUrl})
     if (url) {
+        // await Url.deleteMany({}) For deleting entries from database
         res.status(401).json("Url already used")
     } else {
         const urlCode = tools.generateID()
         while (!Url.findOne({ urlCode: urlCode })) {
             urlCode = tools.generateID()
         }
-        const shortUrl = "localhost:5000/" + urlCode
+        const shortUrl = "http://localhost:5000/" + urlCode
         await Url.create({ long: longUrl, short: shortUrl, urlCode: urlCode})
         res.redirect('/')
     }
-    
 })
 
 app.get("/:urlCode", async (req, res) => {
     const urlCode = await Url.findOne({urlCode: req.params.urlCode})
     if (urlCode == null) {
-        return res.status(404)
+        return res.status(404).json("Url not found")
     }
     res.redirect(urlCode.long)
 })

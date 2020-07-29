@@ -32,6 +32,9 @@ def test():
     e = (g(77) == 1 * 7 + 8)
     f = (g(820) == 19 * 7 + 100 + 2)
     h = (g(779) == 19 * 7 + 80)
-    if (a and b and c and d and e and f and h):
+    i = (g(1000) == 19 * 9 + 100)
+    if (a and b and c and d and e and f and h and i):
         return True
     return False
+
+print(test())
