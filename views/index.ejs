@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Url Shrinker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-   <h1>URL Shortener</h1>
-   <form action="/shortenUrl" method="POST">
-    <input required placeholder="Url Here" type="url" name="longUrl" id = "longUrl">
-    <button type = "submit">Shorten</button>
-   </form>
-   <table>
-       <thead>
-           <tr>
-               <th>Long Url</th>
-               <th>Shortened Url</th>
-           </tr>
-       </thead>
-       <tbody>
-           <% urls.forEach(url => { %>
-               <tr>
-                   <td><a href="<%= url.long %>"><%= url.long %></a></td>
-                   <td><a href="<%= url.short %>"><%= url.short %></a></td>
-               </tr>
-           <% }); %> 
-       </tbody>
-   </table>
-
+    <div class="container" id=text-box>
+        <h1>URL Shortener</h1>
+        <form action="/shortenUrl" method="POST">
+            <input required placeholder="Enter URL here" type="url" name="longUrl" id="longUrl">
+            <button type="submit" class="btn btn-primary">Shrink!</button>
+        </form>
+    </div> 
+    <div class="container" id=url-list>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Long Url</th>
+                    <th>Shortened Url</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% urls.forEach(url => { %>
+                    <tr>
+                        <td><a href="<%= url.long %>"><%= url.long %></a></td>
+                        <td><a href="<%= url.short %>"><%= url.short %></a></td>
+                    </tr>
+                <% }); %> 
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
