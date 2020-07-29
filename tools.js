@@ -36,7 +36,7 @@ function test() {
     const id = []
     for (var i = 0; i < 10000; i++)
         var newID = generateID()
-        if (id.includes(newID)) {
+        if (id.includes(newID) && newID[0].match(/[a-z]/i) && newID[1].match(/[a-z]/i)) {
             return false
         }
         id.push(newID)
