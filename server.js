@@ -4,6 +4,7 @@ const Url = require("./models/url")
 const tools = require("./tools")
 var path = require("path")
 var port = process.env.PORT || 5000
+const baseUrl = "http://localhost:5000/"
 const app = express()
 
 mongoose.connect("mongodb://localhost/urlDatabase", {
@@ -31,7 +32,7 @@ app.post("/shortenUrl", async (req, res) => {
         while (!Url.findOne({ urlCode: urlCode })) {
             urlCode = tools.generateID()
         }
-        const shortUrl = "http://localhost:5000/" + urlCode
+        const shortUrl = baseUrl + urlCode
         await Url.create({ long: longUrl, short: shortUrl, urlCode: urlCode})
         res.redirect('/')
     }
